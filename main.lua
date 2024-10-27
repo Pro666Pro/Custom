@@ -1,4 +1,4 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 (bro) ",Icon = "rbxassetid://7733658504",Duration = 5})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 nah ",Icon = "rbxassetid://7733658504",Duration = 5})
 
 wait(2)
 
@@ -29,8 +29,8 @@ function Animations()
 if speed == 0 do
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
-until speed >= 1
-elseif speed >= 1 then
+until speed > 1
+elseif speed > 1 then
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
 end
