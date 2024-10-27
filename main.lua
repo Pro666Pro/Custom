@@ -2,6 +2,8 @@ game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text
 
 wait(2)
 
+if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
+
 local character = script.Parent --Gets character
 local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
  
@@ -174,3 +176,29 @@ elseif _G.SlapstickAura = true then
 _G.SlapstickAura = false
 end
 end)
+
+else
+
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Don't have boxer glove, please wait...",Icon = "rbxassetid://7733658504",Duration = 5})
+
+wait(1)
+	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+
+wait(1)
+	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+
+wait(1)
+	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+
+wait(1)
+	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+
+wait(1)
+	
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+
+end
