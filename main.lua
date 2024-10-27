@@ -1,9 +1,43 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 (do not skid)",Icon = "rbxassetid://7733658504",Duration = 5})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 (ez) ",Icon = "rbxassetid://7733658504",Duration = 5})
 
 wait(2)
 
 if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
 
+speed = Player.Character.PrimaryPart.Velocity.Magnitude
+	
+if game.ReplicatedStorage:FindFirstChild("WalkAnim") == nil then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://16163350920"
+Anim.Name = "WalkAnim"
+Anim.Parent = game.ReplicatedStorage
+elseif game.ReplicatedStorage:FindFirstChild("WalkAnim") ~= nil then
+game.ReplicatedStorage:FindFirstChild("WalkAnim").AnimationId = "rbxassetid://16163350920"
+end
+
+if game.ReplicatedStorage:FindFirstChild("IdleAnim") == nil then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://16163355836"
+Anim.Name = "IdleAnim"
+Anim.Parent = game.ReplicatedStorage
+elseif game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
+game.ReplicatedStorage:FindFirstChild("IdleAnim").AnimationId = "rbxassetid://16163355836"
+end
+
+
+function Animations()
+if speed = 0 do
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+until speed > 0
+elseif speed > 0 then
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+end
+
+--16163350920 - Walk - (Edgelord Glove)
+--16163355836 - Idle - (Edgelord Glove)
+	
 mouse = game.Players.LocalPlayer:GetMouse()
 
 local Players = game:GetService("Players")
@@ -30,6 +64,8 @@ local bypass;
         return bypass(method, ...)
     end)
 
+
+-- Note For Skidders, This is FE music
 local args = {
 	[1] = "rbxassetid://9133844756",
 	[2] = game:GetService("Players").LocalPlayer.Character.Torso
@@ -48,6 +84,10 @@ wait(0.3)
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame
 
+coroutine.wrap(Animations)() 
+		
+_G.TP = false
+	
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextButton = Instance.new("TextButton")
@@ -106,6 +146,11 @@ TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.Draggable = true
 TextButton.MouseButton1Click:Connect(function()
+if _G.TP = false then
+_G.TP = true
+wait(0.01)
+if _G.TP = true then
+_G.TP = false
 TP()
 end)
 
