@@ -4,6 +4,8 @@ wait(2)
 
 if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
 
+mouse = game.Players.LocalPlayer:GetMouse()
+
 local character = script.Parent --Gets character
 local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
  
@@ -27,10 +29,6 @@ humanoid.Running:Connect(function(speed) --Creates a function once the character
 	end
 end)
 
-local UIS = game:GetService("UserInputService")
-
-local Mouse = Player:GetMouse()
-
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Events = ReplicatedStorage:WaitForChild("Events")
@@ -42,21 +40,6 @@ local Player = Players.LocalPlayer
 local Api = "https://games.roblox.com/v1/games/"
 local _place, _id = game.PlaceId, game.JobId
 local _servers = Api .. _place .. "/servers/Public?sortOrder=Desc&limit=100"
-
-function GetCharacter()
-   return game.Players.LocalPlayer.Character
-end
-
-function Teleport(pos)
-   local Char = GetCharacter()
-   if Char then
-       Char:MoveTo(pos)
-   end
-end
-
-   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
-       Teleport(Mouse.Hit.p)
-   end
 
 local bypass;
     bypass = hookmetamethod(game, "__namecall", function(method, ...) 
@@ -70,26 +53,19 @@ local bypass;
         return bypass(method, ...)
     end)
 
-function SlapstickAura()
-if _G.SlapstickAura = false then
-return
-elseif _G.SlapstickAura = true then
-game:GetService("ReplicatedStorage").slapstick:FireServer("fullcharged")
-task.wait()
-end
-end
-
-_G.SlapstickAura = false
-
-coroutine.wrap(SlapstickAura)() 
-
 local args = {
-	[1] = "rbxassetid://ID HERE",
+	[1] = "rbxassetid://9133844756",
 	[2] = game:GetService("Players").LocalPlayer.Character.Torso
 }
 game:GetService("ReplicatedStorage"):WaitForChild("PlaySoundRemote"):InvokeServer(unpack(args))
 
 fireclickdetector(workspace.Lobby["Boxer"].ClickDetector)
+
+function TP()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end
 
 wait(0.3)
 
@@ -118,7 +94,7 @@ TextButton_3.Parent = Frame
 TextButton_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_3.BorderSizePixel = 0
-TextButton_3.Position = UDim2.new(51, 51, 51, 1)
+TextButton_3.Position = UDim2.new(51, 51, 51, 51)
 TextButton_3.Size = UDim2.new(0, 50, 0, 50)
 TextButton_3.Font = Enum.Font.SourceSans
 TextButton_3.Text = "E"
@@ -153,28 +129,7 @@ TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.Draggable = true
 TextButton.MouseButton1Click:Connect(function()
-UIS.InputBegan:Connect(function(input)
-end)
-
-TextButton_2.Parent = Frame
-TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.BorderSizePixel = 0
-TextButton_2.Position = UDim2.new(51, 51, 51, 1)
-TextButton_2.Size = UDim2.new(0, 50, 0, 50)
-TextButton_2.Font = Enum.Font.SourceSans
-TextButton_2.Text = "SlapStick Aura"
-TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.TextScaled = true
-TextButton_2.TextSize = 14.000
-TextButton_2.TextWrapped = true
-TextButton_2.Draggable = true
-TextButton_2.MouseButton1Click:Connect(function()
-if _G.SlapstickAura = false then
-_G.SlapstickAura = true
-elseif _G.SlapstickAura = true then
-_G.SlapstickAura = false
-end
+TP()
 end)
 
 else
