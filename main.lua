@@ -26,11 +26,11 @@ end
 
 
 function Animations()
-if speed = 0 do
+if speed == 0 do
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
-until speed > 0
-elseif speed > 0 then
+until speed >= 1
+elseif speed >= 1 then
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
 end
