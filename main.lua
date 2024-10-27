@@ -1,33 +1,10 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234",Icon = "rbxassetid://7733658504",Duration = 5})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 (lol)",Icon = "rbxassetid://7733658504",Duration = 5})
 
 wait(2)
 
 if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
 
 mouse = game.Players.LocalPlayer:GetMouse()
-
-local character = script.Parent --Gets character
-local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
- 
--- Remeber to select the animtion object and set the id to your own!
-local walkAnim = script:WaitForChild("Walk") --Gets the walk animation for later use.
-local walkAnimTrack = humanoid.Animator:LoadAnimation("rbxassetid://16163350920") --Gets the variable for the animation using the animation instance's ID and the humanoid
-local idleAnim = script:WaitForChild("Idle") --Gets the walk animation for later use.
-local idleAnimTrack = humanoid.Animator:LoadAnimation("rbxassetid://16163355836") --Gets the variable for the animation using the animation instance's ID and the humanoid
- 
-humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
-	if speed > 0 then --Plays the animation if the players speed is over 0.
-		if not walkAnimTrack.IsPlaying then --Plays the track if it isn't playing already.
-      idleAnimTrack:Stop()
-			walkAnimTrack:Play()
-		end
-	else --Stops the walk track if the player's speed is 0.
-		if walkAnimTrack.IsPlaying then
-			walkAnimTrack:Stop()
-      idleAnimTrack:Play()
-		end
-	end
-end)
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
