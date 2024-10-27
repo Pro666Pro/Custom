@@ -148,10 +148,12 @@ TextButton.Draggable = true
 TextButton.MouseButton1Click:Connect(function()
 if _G.TP = false then
 _G.TP = true
+end
 wait(0.01)
 if _G.TP = true then
 _G.TP = false
 TP()
+end
 end)
 
 else
