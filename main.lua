@@ -1,11 +1,19 @@
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 skib",Icon = "rbxassetid://7733658504",Duration = 5})
 
-wait(2)
+wait(1.4)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+
+wait(0.3)
+
+_G.Walking == false
+
+wait(0.3)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
 
 if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
 
-speed = Player.Character.PrimaryPart.Velocity.Magnitude
-	
 if game.ReplicatedStorage:FindFirstChild("WalkAnim") == nil then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://16163350920"
@@ -24,16 +32,25 @@ elseif game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
 game.ReplicatedStorage:FindFirstChild("IdleAnim").AnimationId = "rbxassetid://16163355836"
 end
 
-
-function Animations()
-if speed == 0 do
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
-until speed > 1
-elseif speed > 1 then
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
-end
+-- Very basic walking animation script by GnomeCode
+local character = script.Parent --Gets character
+local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
+	
+humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
+	if speed > 0 then --Plays the animation if the players speed is over 0.
+		if not _G.Walking == true then --Plays the track if it isn't playing already.
+			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+			_G.Walking == true
+		end
+	else --Stops the walk track if the player's speed is 0.
+		if _G.Walking == true then
+			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+			_G.Walking == false
+		end
+	end
+end)
 
 --16163350920 - Walk - (Edgelord Glove)
 --16163355836 - Idle - (Edgelord Glove)
