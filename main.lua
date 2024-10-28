@@ -1,4 +1,4 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 nah ",Icon = "rbxassetid://7733658504",Duration = 5})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 skib",Icon = "rbxassetid://7733658504",Duration = 5})
 
 wait(2)
 
@@ -75,6 +75,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("PlaySoundRemote"):InvokeServe
 fireclickdetector(workspace.Lobby["Boxer"].ClickDetector)
 
 function TP()
+
 local pos = mouse.Hit+Vector3.new(0,2.5,0)
 pos = CFrame.new(pos.X,pos.Y,pos.Z)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
@@ -85,8 +86,6 @@ wait(0.3)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame
 
 coroutine.wrap(Animations)() 
-		
-_G.TP = false
 	
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -146,14 +145,7 @@ TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.Draggable = true
 TextButton.MouseButton1Click:Connect(function()
-if _G.TP = false then
-_G.TP = true
-end
-wait(0.01)
-if _G.TP = true then
-_G.TP = false
 TP()
-end
 end)
 
 else
