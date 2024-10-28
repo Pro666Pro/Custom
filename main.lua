@@ -14,6 +14,13 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
 
 if game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 1223765330375569) then
 
+-- Very basic walking animation script by GnomeCode
+local character = script.Parent --Gets character
+local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
+	
+humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
+	if speed > 0 then --Plays the animation if the players speed is over 0.
+		if not _G.Walking == true then --Plays the track if it isn't playing already.
 if game.ReplicatedStorage:FindFirstChild("WalkAnim") == nil then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://16163350920"
@@ -22,7 +29,10 @@ Anim.Parent = game.ReplicatedStorage
 elseif game.ReplicatedStorage:FindFirstChild("WalkAnim") ~= nil then
 game.ReplicatedStorage:FindFirstChild("WalkAnim").AnimationId = "rbxassetid://16163350920"
 end
-
+wait(0.5)
+if game.ReplicatedStorage:FindFirstChild("WalkAnim") ~= nil then
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+end
 if game.ReplicatedStorage:FindFirstChild("IdleAnim") == nil then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://16163355836"
@@ -31,22 +41,36 @@ Anim.Parent = game.ReplicatedStorage
 elseif game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
 game.ReplicatedStorage:FindFirstChild("IdleAnim").AnimationId = "rbxassetid://16163355836"
 end
-
--- Very basic walking animation script by GnomeCode
-local character = script.Parent --Gets character
-local humanoid = character:WaitForChild("Humanoid") --Gets humanoid
-	
-humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
-	if speed > 0 then --Plays the animation if the players speed is over 0.
-		if not _G.Walking == true then --Plays the track if it isn't playing already.
-			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
-			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+if game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+end
 			_G.Walking == true
 		end
 	else --Stops the walk track if the player's speed is 0.
 		if _G.Walking == true then
-			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
-			game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+if game.ReplicatedStorage:FindFirstChild("WalkAnim") == nil then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://16163350920"
+Anim.Name = "WalkAnim"
+Anim.Parent = game.ReplicatedStorage
+elseif game.ReplicatedStorage:FindFirstChild("WalkAnim") ~= nil then
+game.ReplicatedStorage:FindFirstChild("WalkAnim").AnimationId = "rbxassetid://16163350920"
+end
+wait(0.5)
+if game.ReplicatedStorage:FindFirstChild("WalkAnim") ~= nil then
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.WalkAnim, game.Players.LocalPlayer.Character.Humanoid):Stop()
+end
+if game.ReplicatedStorage:FindFirstChild("IdleAnim") == nil then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://16163355836"
+Anim.Name = "IdleAnim"
+Anim.Parent = game.ReplicatedStorage
+elseif game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
+game.ReplicatedStorage:FindFirstChild("IdleAnim").AnimationId = "rbxassetid://16163355836"
+end
+if game.ReplicatedStorage:FindFirstChild("IdleAnim") ~= nil then
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.IdleAnim, game.Players.LocalPlayer.Character.Humanoid):Play()
+end
 			_G.Walking == false
 		end
 	end
