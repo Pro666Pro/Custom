@@ -12,8 +12,6 @@ local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://16163350920"
 Anim.Name = "Animation"
 Anim.Parent = game.ReplicatedStorage
-elseif game.ReplicatedStorage:FindFirstChild("Animation") ~= nil then
-game.ReplicatedStorage:FindFirstChild("Animation").AnimationId = "rbxassetid://16163350920"
 end
 
 if game.ReplicatedStorage:FindFirstChild("Animationn") == nil then
@@ -21,8 +19,6 @@ local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://16163355836"
 Anim.Name = "Animationn"
 Anim.Parent = game.ReplicatedStorage
-elseif game.ReplicatedStorage:FindFirstChild("Animationn") ~= nil then
-game.ReplicatedStorage:FindFirstChild("Animationn").AnimationId = "rbxassetid://16163355836"
 end
 
 humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
