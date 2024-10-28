@@ -1,4 +1,4 @@
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234",Icon = "rbxassetid://7733658504",Duration = 5})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234 haha",Icon = "rbxassetid://7733658504",Duration = 5})
 
 wait(1.4)
 
@@ -15,10 +15,6 @@ Anim.Parent = game.ReplicatedStorage
 elseif game.ReplicatedStorage:FindFirstChild("Animation") ~= nil then
 game.ReplicatedStorage:FindFirstChild("Animation").AnimationId = "rbxassetid://16163350920"
 end
-wait(0.5)
-if game.ReplicatedStorage:FindFirstChild("Animation") ~= nil then
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.Animation, game.Players.LocalPlayer.Character.Humanoid):Play()
-end
 
 if game.ReplicatedStorage:FindFirstChild("Animationn") == nil then
 local Anim = Instance.new("Animation")
@@ -27,10 +23,6 @@ Anim.Name = "Animationn"
 Anim.Parent = game.ReplicatedStorage
 elseif game.ReplicatedStorage:FindFirstChild("Animationn") ~= nil then
 game.ReplicatedStorage:FindFirstChild("Animationn").AnimationId = "rbxassetid://16163355836"
-end
-wait(0.5)
-if game.ReplicatedStorage:FindFirstChild("Animationn") ~= nil then
-game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(game.ReplicatedStorage.Animationn, game.Players.LocalPlayer.Character.Humanoid):Play()
 end
 
 humanoid.Running:Connect(function(speed) --Creates a function once the character runs.
